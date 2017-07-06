@@ -10,17 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Comment implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idComment;
+	private Long commentId;
 	private String comment;
 	private Date creationDate;
 	private String author;
 	@ManyToOne
 	@JoinColumn(name = "messageId")
+	@JsonIgnoreProperties("comments")
 	private Message message;
 
 	public Comment() {
@@ -43,11 +46,11 @@ public class Comment implements Serializable {
 	}
 
 	public Long getIdComment() {
-		return idComment;
+		return commentId;
 	}
 
 	public void setIdComment(Long idComment) {
-		this.idComment = idComment;
+		this.commentId = idComment;
 	}
 
 	public String getComment() {

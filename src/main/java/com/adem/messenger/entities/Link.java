@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Link implements Serializable {
 
@@ -19,6 +21,7 @@ public class Link implements Serializable {
 	private String rel;
 	@ManyToOne
 	@JoinColumn(name = "messageId")
+	@JsonIgnoreProperties("links")
 	private Message message;
 
 	public Link() {
