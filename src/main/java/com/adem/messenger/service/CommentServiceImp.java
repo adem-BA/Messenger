@@ -20,18 +20,19 @@ public class CommentServiceImp implements CommentService {
 
 	@Override
 	public List<Comment> getAllComments(Long messageId) {
-		return commentRepo.findAll();
+		return commentRepo.getCommentsFromMessage(messageId);
 	}
 
 	@Override
 	public Comment getCommentById(Long messageId, Long commentId) {
-		return null;
+		return commentRepo.getCommentFromMessageById(messageId, commentId);
 	}
 
 	@Override
 	public Comment addComment(Long messageId, Comment comment) {
-		Comment result = commentRepo.saveAndFlush(comment);
 		Message message = messageRepo.getOne(messageId);
+		comment.setMessage(message);
+		Comment result = commentRepo.saveAndFlush(comment);
 		message.getComments().add(result);
 		messageRepo.save(message);
 
@@ -40,6 +41,7 @@ public class CommentServiceImp implements CommentService {
 
 	@Override
 	public Comment updateComment(Long messageId, Comment comment) {
+		
 		return null;
 	}
 

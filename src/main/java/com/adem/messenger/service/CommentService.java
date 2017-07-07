@@ -15,5 +15,5 @@ public interface CommentService {
 	public Comment updateComment(Long messageId, Comment comment);
 
 	public Comment removeComment(Long messageId, Long commentId);
-
+	
 }

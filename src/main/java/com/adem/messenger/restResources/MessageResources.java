@@ -48,5 +48,10 @@ public class MessageResources {
 	public void removeMessage(@PathVariable("messageId") Long id) {
 		messageService.removeMessage(id);
 	}
+	
+	@RequestMapping(value = "messages/{messageId}/comments")
+	public CommentResources getCommentResources() {
+		return new CommentResources();
+	}
 
 }
