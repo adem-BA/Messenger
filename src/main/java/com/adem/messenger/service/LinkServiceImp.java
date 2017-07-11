@@ -43,9 +43,19 @@ public class LinkServiceImp implements LinkService {
 	}
 
 	@Override
-	public void removeLink(Long linkId) {
+	public void removeLink(Long messageId, Long linkId) {
 		linkRepo.delete(linkId);
 
+	}
+
+	@Override
+	public Link updateLink(Long messageId, Long linkId, Link link) {
+		Message message = messageRepo.getOne(messageId);
+		Link result = linkRepo.getLinkFromMessageById(messageId, linkId);
+		result.setHref(link.getHref());
+		result.setRel(link.getRel());
+		linkRepo.save(result);
+		return result;
 	}
 
 }

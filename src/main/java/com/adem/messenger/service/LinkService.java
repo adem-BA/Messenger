@@ -11,6 +11,8 @@ public interface LinkService {
 
 	public Link addLinkToMessage(Long messageId, Link link);
 
-	public void removeLink(Long linkId);
+	public void removeLink(Long messageId,Long linkId);
+	
+	public Link updateLink(Long messageId, Long linkId, Link link);
 
 }

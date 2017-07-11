@@ -17,14 +17,14 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 public class LinkResources {
 	@Autowired
 	LinkService linkService;
-	
+
 	@RequestMapping(value = "messages/{messageId}/links", method = RequestMethod.GET)
 	public List<Link> getAllLink(@PathVariable("messageId") Long messageId) {
 		return linkService.getAllLink(messageId);
 	}
-	
+
 	@RequestMapping(value = "messages/{messageId}/links/{linkId}")
-	public Link getLink( @PathVariable("messageId") Long messageId, @PathVariable("linkId") Long linkId){
+	public Link getLink(@PathVariable("messageId") Long messageId, @PathVariable("linkId") Long linkId) {
 		return linkService.getLinkById(messageId, linkId);
 	}
 
@@ -33,13 +33,15 @@ public class LinkResources {
 		return linkService.addLinkToMessage(messageId, link);
 	}
 
-	@RequestMapping(value = "messages/{messageId}/links", method = RequestMethod.PUT)
-	public Link updateLink(@PathVariable("messageId") Long messageId, @RequestBody Link link) {
-		return linkService.addLinkToMessage(messageId, link);
+	@RequestMapping(value = "messages/{messageId}/links/{linkId}", method = RequestMethod.PUT)
+	public Link updateLink(@PathVariable("messageId") Long messageId, @PathVariable("linkId") Long linkId,
+			@RequestBody Link link) {
+		return linkService.updateLink(messageId, linkId, link);
 	}
-	
-	
-	
-	
+
+	@RequestMapping(value = "messages/{messageId}/links/{linkId}", method = RequestMethod.DELETE)
+	public void removeLink(Long messageId, @PathVariable("linkId") Long linkId) {
+		linkService.removeLink(messageId, linkId);
+	}
 
 }
