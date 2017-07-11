@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.adem.messenger.entities.Profile;
 
-public interface ProfilRepository extends JpaRepository<Profile, String> {
+public interface ProfileRepository extends JpaRepository<Profile, String> {
 
 }
