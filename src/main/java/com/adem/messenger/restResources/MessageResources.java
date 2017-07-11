@@ -40,18 +40,13 @@ public class MessageResources {
 
 	@RequestMapping(value = "messages/{messageId}", method = RequestMethod.PUT)
 	public Message updateMessage(@PathVariable("messageId") Long id, @RequestBody Message message) {
-		
+
 		return messageService.updateMessageBySpecifiedMessage(id, message);
 	}
 
 	@RequestMapping(value = "messages/{messageId}", method = RequestMethod.DELETE)
 	public void removeMessage(@PathVariable("messageId") Long id) {
 		messageService.removeMessage(id);
-	}
-	
-	@RequestMapping(value = "messages/{messageId}/comments")
-	public CommentResources getCommentResources() {
-		return new CommentResources();
 	}
 
 }

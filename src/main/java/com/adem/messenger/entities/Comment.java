@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -77,6 +78,7 @@ public class Comment implements Serializable {
 		this.author = author;
 	}
 
+	@JsonIgnore
 	public Message getMessage() {
 		return message;
 	}

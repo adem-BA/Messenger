@@ -13,7 +13,7 @@ import com.adem.messenger.entities.Comment;
 import com.adem.messenger.service.CommentService;
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "messages/{messageId}/comments")
 public class CommentResources {
 	@Autowired
 	private CommentService commentService;
