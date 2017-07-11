@@ -33,7 +33,7 @@ public class LinkResources {
 		return linkService.addLinkToMessage(messageId, link);
 	}
 
-	@RequestMapping(value = "/messages/{messageId}/links", method = RequestMethod.PUT)
+	@RequestMapping(value = "messages/{messageId}/links", method = RequestMethod.PUT)
 	public Link updateLink(@PathVariable("messageId") Long messageId, @RequestBody Link link) {
 		return linkService.addLinkToMessage(messageId, link);
 	}

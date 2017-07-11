@@ -22,8 +22,9 @@ public class LinkServiceImp implements LinkService {
 	@Override
 	public Link addLinkToMessage(Long messageId, Link link) {
 
-		Link result = linkRepo.saveAndFlush(link);
 		Message message = messageRepo.getOne(messageId);
+		link.setMessage(message);
+		Link result = linkRepo.saveAndFlush(link);
 		message.getLinks().add(result);
 		messageRepo.save(message);
 
@@ -32,7 +33,7 @@ public class LinkServiceImp implements LinkService {
 
 	@Override
 	public List<Link> getAllLink(Long messageId) {
-		return messageRepo.getOne(messageId).getLinks();
+		return linkRepo.getAllLinks(messageId);
 	}
 
 	@Override

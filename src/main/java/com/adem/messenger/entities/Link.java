@@ -18,7 +18,7 @@ public class Link implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long linkId;
-	private String link;
+	private String href;
 	private String rel;
 	@ManyToOne
 	@JoinColumn(name = "messageId")
@@ -29,15 +29,15 @@ public class Link implements Serializable {
 		super();
 	}
 
-	public Link(String link, String rel) {
+	public Link(String href, String rel) {
 		super();
-		this.link = link;
+		this.href = href;
 		this.rel = rel;
 	}
 
-	public Link(String link, String rel, Message message) {
+	public Link(String href, String rel, Message message) {
 		super();
-		this.link = link;
+		this.href = href;
 		this.rel = rel;
 		this.message = message;
 	}
@@ -50,12 +50,12 @@ public class Link implements Serializable {
 		this.linkId = linkId;
 	}
 
-	public String getLink() {
-		return link;
+	public String getHref() {
+		return href;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	public void setHref(String link) {
+		this.href = link;
 	}
 
 	public String getRel() {
