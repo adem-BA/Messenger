@@ -34,4 +34,15 @@ public class CommentResources {
 		return commentService.addComment(messageId, comment);
 	}
 
+	@RequestMapping(value = "/{commentId}", method = RequestMethod.PUT)
+	public Comment updateComment(@PathVariable("messageId") Long messageId, @PathVariable("commentId") Long commentId,
+			@RequestBody Comment comment) {
+		return commentService.updateComment(messageId, commentId, comment);
+	}
+
+	@RequestMapping(value = "/{commentId}", method = RequestMethod.DELETE)
+	public void removeComment(@PathVariable("commentId") Long commentId) {
+		commentService.removeComment(commentId);
+	}
+
 }

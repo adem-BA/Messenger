@@ -42,7 +42,6 @@ public class Link implements Serializable {
 		this.message = message;
 	}
 
-	@JsonIgnore
 	public Long getLinkId() {
 		return linkId;
 	}

@@ -12,8 +12,8 @@ public interface CommentService {
 
 	public Comment addComment(Long messageId, Comment comment);
 
-	public Comment updateComment(Long messageId, Comment comment);
+	public Comment updateComment(Long messageId, Long commentId, Comment comment);
 
-	public Comment removeComment(Long messageId, Long commentId);
+	public void removeComment(Long commentId);
 	
 }

@@ -1,5 +1,6 @@
 package com.adem.messenger.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,14 +41,19 @@ public class CommentServiceImp implements CommentService {
 	}
 
 	@Override
-	public Comment updateComment(Long messageId, Comment comment) {
-		
-		return null;
+	public Comment updateComment(Long messageId, Long commentId, Comment comment) {
+		Comment result = commentRepo.getCommentFromMessageById(messageId, commentId);
+		result.setAuthor(comment.getAuthor());
+		result.setComment(comment.getComment());
+		result.setCreationDate(new Date());
+		commentRepo.save(result);
+
+		return result;
 	}
 
 	@Override
-	public Comment removeComment(Long messageId, Long commentId) {
-		return null;
+	public void removeComment(Long commentId) {
+		commentRepo.delete(commentId);
 	}
 
 }
